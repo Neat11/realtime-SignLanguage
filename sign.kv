@@ -1,20 +1,29 @@
+#:kivy 1.0.0
 #:import NoTransition kivy.uix.screenmanager.NoTransition
 
 <MyScreenManager>:
     transition: NoTransition()
     canvas:
         Color:
-            rgba: 1,1,1,1
+            rgba: 0,0,0,0
         Rectangle:
             size: self.size
     Splash:
         name: "splash"
+    Launch:
+        name: "Launch"
 
 <Splash>:
     BoxLayout:
         orientation:"vertical"
-        canvas:
-            Ellipse:
-                size: self.size*0.2    
-        
+        Label:
+            text: "Signo"
+            size_hint: 0.4,0.4
+            font_size: dp(40)
+        Button:
+            text:"Launch"
+            on_release: root.launch()
+          
+<Launch>:
+
     
