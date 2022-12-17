@@ -1,7 +1,7 @@
 import kivy 
 kivy.require('1.9.0')
 from kivy.core.window import Window
-Window.size = (600, 400)
+Window.maximize()
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager,Screen
 from kivy.uix.boxlayout import BoxLayout
@@ -12,11 +12,8 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 import os
-from LanguageRecognition import LanguageRecognition
-
 
 class Launch(Screen):
-    obj = LanguageRecognition()
     def __init__(self, **kw):
         super().__init__(**kw)
         print("launch initiated")
@@ -25,11 +22,16 @@ class Launch(Screen):
         print("launch_button intiated")
 
 class Splash(Screen):
-    obj = LanguageRecognition()
+
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        
+
     def launch(self):
         self.manager.current = 'Launch'
         print("kuch ho gaya")
-        self.obj.startCapture()
+
+
 class MyScreenManager(ScreenManager):
     def changescreen(self, value):
         self.manager.current = value
