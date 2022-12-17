@@ -3,6 +3,7 @@ import numpy as np
 import os
 import mediapipe as mp
 import tensorflow as tf
+import pyvirtualcam
 class LanguageRecognition:
     actions = np.array(['hello',"iLoveYou",'okay'])
     model = tf.keras.Sequential()
@@ -75,6 +76,43 @@ class LanguageRecognition:
         self.cap.release()
         cv2.destroyAllWindows()
         
+    def startCapture(self) -> None:
+        sequence =[]
+        sentence =[]
+        treshold =0.4
+        frameno = 0
+        cap = cv2.VideoCapture(0)
+        fmt = pyvirtualcam.PixelFormat.BGR
+        with pyvirtualcam.Camera(width=1280, height=720, fps=20, fmt=fmt) as cam:
+            with self.mp_holistic.Holistic(min_detection_confidence =0.5, min_tracking_confidence =0.5) as holistic:        
+                while (cap.isOpened()):
+                    string =''
+                    frameno+=1
+                    ret, frame =cap.read()
+                    image, results = self.mediapipe_detection(frame, holistic)
+                    image = cv2.resize(image, (1280, 720), interpolation=cv2.BORDER_DEFAULT)
+                    self.draw_landmarks(image, results)
+                    keypoints = self.extract_keypoints(results)
+                    sequence.append(keypoints)
+                    sequence = sequence[-30:]
+                    if(len(sequence)==30):
+                        res = self.model.predict(np.expand_dims(sequence, axis=0))[0]
+                        string = (self.actions[np.argmax(res)])
+
+                    x,y = 640-len(string)*10,670
+                    #frame = cv2.resize(frame, (1280, 720), interpolation=cv2.BORDER_DEFAULT)
+                    #cv2.putText(frame,f"{len(string)},{y}",(50,50),3,1,(0,0,0),1,cv2.LINE_8)
+                    #cv2.rectangle(frame,(x,y+1),(x+len(string)*21,y-22),(0,0,0),-1)
+                    #cv2.putText(frame,string,(x,y),3,1,(255,255,255),1,cv2.LINE_8)
+                    cv2.rectangle(image,(x,y+1),(x+len(string)*21,y-22),(0,0,0),-1)
+                    cv2.putText(image,string,(x,y),3,1,(255,255,255),1,cv2.LINE_8)
+                    #frame = cv2.flip(frame,1)
+                    cam.send(image)
+                    cam.sleep_until_next_frame()
+                    if(cv2.waitKey(5)%256==27):
+                            break
+            cap.release()
+        cv2.destroyAllWindows()
     def __init__(self) -> None:
         pass
 
