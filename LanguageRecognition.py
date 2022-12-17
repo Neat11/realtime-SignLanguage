@@ -66,3 +66,4 @@ class LanguageRecognition:
         pass
 
 obj = LanguageRecognition()
+obj.startCapture()
