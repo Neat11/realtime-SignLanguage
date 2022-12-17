@@ -70,7 +70,7 @@ class LanguageRecognition:
                     res = self.model.predict(np.expand_dims(sequence, axis=0))[0]
                     print(self.actions[np.argmax(res)])
                 cv2.imshow("Open cv frame", image)
-                if(cv2.waitKey(10) and 0xFF == ord('q')):
+                if(cv2.waitKey(5) and 0xFF == ord('q')):
                     break
         self.cap.release()
         cv2.destroyAllWindows()
