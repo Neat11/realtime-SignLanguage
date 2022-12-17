@@ -1,0 +1,18 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<MyScreenManager>:
+    transition: NoTransition()
+    canvas:
+        Color:
+            rgba: 0.6,0,0,0
+        Rectangle:
+            size: self.size
+    Splash:
+        name: "splash"
+
+<Splash>:
+    BoxLayout:
+        orientation:"vertical"
+        Button:
+            text:"Hello World"
+    
