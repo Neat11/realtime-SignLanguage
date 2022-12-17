@@ -4,7 +4,7 @@
     transition: NoTransition()
     canvas:
         Color:
-            rgba: 0.6,0,0,0
+            rgba: 1,1,1,1
         Rectangle:
             size: self.size
     Splash:
@@ -13,6 +13,8 @@
 <Splash>:
     BoxLayout:
         orientation:"vertical"
-        Button:
-            text:"Hello World"
+        canvas:
+            Ellipse:
+                size: self.size*0.2    
+        
     

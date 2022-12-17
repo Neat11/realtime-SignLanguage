@@ -14,7 +14,6 @@ from kivy.uix.textinput import TextInput
 class Splash(Screen):
     pass
 
-
 class MyScreenManager(ScreenManager):
     def changescreen(self, value):
         self.manager.current = value
