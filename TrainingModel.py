@@ -5,7 +5,7 @@ import os
 from keras.callbacks import TensorBoard
 
 DATA_PATH = os.path.join('MP_DATA')
-actions = np.array(['hello',"iLoveYou",'okay'])
+actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
 no_sequences = 30
 sequence_length =30
 
@@ -52,9 +52,10 @@ model.add(tf.keras.layers.Dense(32,activation='relu'))
 model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
 
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-# model.fit(x_train, y_train, epochs=2000, callbacks=[tb_callback])
+model.fit(x_train, y_train, epochs=2000, callbacks=[tb_callback])
 
-model.load_weights('action.h5')
+# model.load_weights('action2.h5')
+model.save('action2.h5')
 model.summary() 
 
 
