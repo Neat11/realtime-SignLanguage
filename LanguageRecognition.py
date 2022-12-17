@@ -18,7 +18,7 @@ class LanguageRecognition:
     model.load_weights('action2.h5')
 
     DATA_PATH = os.path.join('MP_DATA')
-    actions = np.array(['hello',"iLoveYou",'okay'])
+    actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
     no_sequences = 30
     sequence_length =30
     cap = cv2.VideoCapture(0)
@@ -37,14 +37,14 @@ class LanguageRecognition:
             self.mp_drawing.draw_landmarks(image, results.left_hand_landmarks, self.mp_holistic.HAND_CONNECTIONS)
         if(results.right_hand_landmarks):
             self.mp_drawing.draw_landmarks(image, results.right_hand_landmarks, self.mp_holistic.HAND_CONNECTIONS)
-        self.mp_drawing.draw_landmarks(image, results.face_landmarks, self.mp_holistic.FACEMESH_TESSELATION, 
-                                 self.mp_drawing.DrawingSpec(color=(80,110,10), thickness=1, circle_radius=1), 
-                                 self.mp_drawing.DrawingSpec(color=(80,256,121), thickness=1, circle_radius=1)
-                                 ) 
-        self.mp_drawing.draw_landmarks(image, results.pose_landmarks, self.mp_holistic.POSE_CONNECTIONS,
-                                self.mp_drawing.DrawingSpec(color=(80,22,10), thickness=2, circle_radius=4), 
-                                self.mp_drawing.DrawingSpec(color=(80,44,121), thickness=2, circle_radius=2)
-                                ) 
+        # self.mp_drawing.draw_landmarks(image, results.face_landmarks, self.mp_holistic.FACEMESH_TESSELATION, 
+        #                          self.mp_drawing.DrawingSpec(color=(80,110,10), thickness=1, circle_radius=1), 
+        #                          self.mp_drawing.DrawingSpec(color=(80,256,121), thickness=1, circle_radius=1)
+        #                          ) 
+        # self.mp_drawing.draw_landmarks(image, results.pose_landmarks, self.mp_holistic.POSE_CONNECTIONS,
+        #                         self.mp_drawing.DrawingSpec(color=(80,22,10), thickness=2, circle_radius=4), 
+        #                         self.mp_drawing.DrawingSpec(color=(80,44,121), thickness=2, circle_radius=2)
+        #                         ) 
     def extract_keypoints(self,results):
         lh = np.array([[res.x, res.y, res.z] for res in results.left_hand_landmarks.landmark]).flatten() if results.left_hand_landmarks else np.zeros(21*3)
         rh = np.array([[res.x, res.y, res.z] for res in results.right_hand_landmarks.landmark]).flatten() if results.right_hand_landmarks else np.zeros(21*3)
