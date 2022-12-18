@@ -1,7 +1,6 @@
 import kivy 
 kivy.require('1.9.0')
 from kivy.core.window import Window
-Window.fullscreen = True
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager,Screen
 from kivy.uix.boxlayout import BoxLayout
