@@ -103,10 +103,12 @@ class LanguageRecognition:
                     #frame = cv2.resize(frame, (1280, 720), interpolation=cv2.BORDER_DEFAULT)
                     #cv2.putText(frame,f"{len(string)},{y}",(50,50),3,1,(0,0,0),1,cv2.LINE_8)
                     #cv2.rectangle(frame,(x,y+1),(x+len(string)*21,y-22),(0,0,0),-1)
+                    
                     #cv2.putText(frame,string,(x,y),3,1,(255,255,255),1,cv2.LINE_8)
                     cv2.rectangle(image,(x,y+1),(x+len(string)*21,y-22),(0,0,0),-1)
                     cv2.putText(image,string,(x,y),3,1,(255,255,255),1,cv2.LINE_8)
                     #frame = cv2.flip(frame,1)
+                    cv2.imshow('Open CV output',image)
                     cam.send(image)
                     cam.sleep_until_next_frame()
                     if(cv2.waitKey(10)%256==27):

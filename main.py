@@ -13,6 +13,7 @@ from kivy.uix.textinput import TextInput
 import os
 from LanguageRecognition import LanguageRecognition as lr
 
+
 class Launch(Screen):
     obj = lr()
     def __init__(self, **kw):
