@@ -64,6 +64,3 @@ class LanguageRecognition:
         cv2.destroyAllWindows()
     def __init__(self) -> None:
         pass
-
-obj = LanguageRecognition()
-obj.startCapture()
