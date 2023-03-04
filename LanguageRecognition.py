@@ -15,7 +15,7 @@ class LanguageRecognition:
     model.add(tf.keras.layers.Dense(32,activation='relu'))
     model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-    model.load_weights('action500.h5')
+    model.load_weights('action300.h5')
 
     DATA_PATH = os.path.join('MP_DATA')
     actions = np.load('actionsArray.npy')

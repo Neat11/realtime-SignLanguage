@@ -22,6 +22,9 @@ import createAction
 class ContentNavigationDrawer(BoxLayout):
     pass
 
+class Help(Screen):
+    pass
+
 class Create(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)

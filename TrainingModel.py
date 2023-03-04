@@ -52,14 +52,15 @@ model.add(tf.keras.layers.Dense(32,activation='relu'))
 model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
 
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-model.fit(x_train, y_train, epochs=500, callbacks=[tb_callback])
+model.fit(x_train, y_train, epochs=300, callbacks=[tb_callback])
 
 # model.load_weights('action2.h5')
-model.save('action500.h5')
+model.save('action300.h5')
 model.summary() 
 
 
 res = model.predict(x_test)
+print(res)
 print(actions[np.argmax(res[4])])
 print(actions[np.argmax(res[0])])
 print(actions[np.argmax(res[2])])
