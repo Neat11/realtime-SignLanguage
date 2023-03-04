@@ -22,7 +22,8 @@ from LanguageRecognition import LanguageRecognition as lr
 class ContentNavigationDrawer(BoxLayout):
     pass
 
-
+class Create(Screen):
+    pass
 
 class Launch(Screen):
     obj = lr()
@@ -44,17 +45,17 @@ class LearnPage(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
         b = StackLayout(orientation='lr-tb',size=(self.size),padding=(0,80))
-        with open("MS-ASL/MSASL_test.json") as fh:
-            articles = json.load(fh)
-            article_urls = [article['url'] for article in articles]
-            print( article_urls) 
-        eurls=[]
-        for i in article_urls:
-            eurls.append(i.replace("watch?v=", "embed/"))
-        print(eurls)
-        for i in eurls:
-            bx=BoxLayout(orientation="vertical",size_hint=(0.2,0.2))
-        b.add_widget(bx)
+        # with open("MS-ASL/MSASL_test.json") as fh:
+        #     articles = json.load(fh)
+        #     article_urls = [article['url'] for article in articles]
+        #     print( article_urls) 
+        # eurls=[]
+        # for i in article_urls:
+        #     eurls.append(i.replace("watch?v=", "embed/"))
+        # print(eurls)
+        # for i in eurls:
+        #     bx=BoxLayout(orientation="vertical",size_hint=(0.2,0.2))
+        # b.add_widget(bx)
      
 
 
