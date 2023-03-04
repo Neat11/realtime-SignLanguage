@@ -4,7 +4,7 @@ import tensorflow as tf
 import os
 from keras.callbacks import TensorBoard
 
-DATA_PATH = os.path.join('MP_DATA')
+DATA_PATH = os.path.join('v1.0.0/MP_DATA/')
 actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
 no_sequences = 30
 sequence_length =30
@@ -23,45 +23,46 @@ for action in actions:
             window.append(res)
         sequences.append(window)
         labels.append(label_map[action])
+
+print(len(sequences))
         
-        
-x=np.array(sequences)
-y = tf.keras.utils.to_categorical(labels).astype(int)
+# x=np.array(sequences)
+# y = tf.keras.utils.to_categorical(labels).astype(int)
 
-print(x.shape)
-print("//////////////////////////////////////////////////////////////////////")
-print(y.shape)
-
-
-x_train, x_test,y_train, y_test = train_test_split(x,y, test_size=0.05)
-print(x_train.shape)
-print(y_train.shape)
-print(x_test.shape)
-print(y_test.shape)
-
-log_dir = os.path.join("Logs")
-tb_callback = TensorBoard(log_dir=log_dir)
+# print(x.shape)
+# print("//////////////////////////////////////////////////////////////////////")
+# print(y.shape)
 
 
-model = tf.keras.Sequential()
-model.add(tf.keras.layers.LSTM(64,return_sequences=True, activation='relu', input_shape =(30,258)))
-model.add(tf.keras.layers.LSTM(128,return_sequences=True, activation='relu'))
-model.add(tf.keras.layers.LSTM(64,return_sequences=False, activation='relu'))
-model.add(tf.keras.layers.Dense(64,activation='relu'))
-model.add(tf.keras.layers.Dense(32,activation='relu'))
-model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
+# x_train, x_test,y_train, y_test = train_test_split(x,y, test_size=0.05)
+# print(x_train.shape)
+# print(y_train.shape)
+# print(x_test.shape)
+# print(y_test.shape)
 
-model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-model.fit(x_train, y_train, epochs=2000, callbacks=[tb_callback])
-
-# model.load_weights('action2.h5')
-model.save('action2.h5')
-model.summary() 
+# log_dir = os.path.join("Logs")
+# tb_callback = TensorBoard(log_dir=log_dir)
 
 
-res = model.predict(x_test)
-print(actions[np.argmax(res[4])])
-print(actions[np.argmax(res[0])])
-print(actions[np.argmax(res[2])])
-print(actions[np.argmax(res[1])])
-print(actions[np.argmax(res[3])])
+# model = tf.keras.Sequential()
+# model.add(tf.keras.layers.LSTM(64,return_sequences=True, activation='relu', input_shape =(30,258)))
+# model.add(tf.keras.layers.LSTM(128,return_sequences=True, activation='relu'))
+# model.add(tf.keras.layers.LSTM(64,return_sequences=False, activation='relu'))
+# model.add(tf.keras.layers.Dense(64,activation='relu'))
+# model.add(tf.keras.layers.Dense(32,activation='relu'))
+# model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
+
+# model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+# model.fit(x_train, y_train, epochs=2000, callbacks=[tb_callback])
+
+# # model.load_weights('action2.h5')
+# model.save('action2.h5')
+# model.summary() 
+
+
+# res = model.predict(x_test)
+# print(actions[np.argmax(res[4])])
+# print(actions[np.argmax(res[0])])
+# print(actions[np.argmax(res[2])])
+# print(actions[np.argmax(res[1])])
+# print(actions[np.argmax(res[3])])
