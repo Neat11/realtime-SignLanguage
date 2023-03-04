@@ -18,14 +18,19 @@ sequences, labels = [],[]
 for action in actions:
     for sequence in range (no_sequences):
         window =[]
-        for frame_num in range(sequence_length ):
+        for frame_num in range(sequence_length):
             res = np.load(os.path.join(DATA_PATH,action,str(sequence),"{}.npy".format(frame_num)))
+            print(res)
             window.append(res)
+            break
         sequences.append(window)
         labels.append(label_map[action])
+        break
+    break
 
-print(len(sequences))
-        
+print(np.shape(np.array(sequences)))
+print(np.shape(np.array(labels)))
+
 # x=np.array(sequences)
 # y = tf.keras.utils.to_categorical(labels).astype(int)
 
