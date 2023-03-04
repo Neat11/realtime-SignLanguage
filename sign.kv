@@ -16,12 +16,13 @@
         name:"learnpage"
     Create:
         name:"create"
+    Help:
+        name:"help"
 
-<LearnPage>:
+<Help>:
     AnchorLayout:
-        anchor_x: 'center'
-        anchor_y: 'center'
-    
+        anchor_x:'center'
+        anchor_y:'center'
         MDNavigationLayout:
 
             ScreenManager:
@@ -51,7 +52,17 @@
                         text_size: self.size
                         halign: "center"
                         valign: "top"
-                    
+                        # font_name: "Comic"
+
+                    MDLabel:
+                        text:"Project Still in Developement... For any queries, raise an issue on the github page and we'll get back to you: https://github.com/Neat11/realtime-SignLanguage"
+                        font_size: dp(self.height*0.05)
+                        theme_text_color: "Custom"
+                        text_color: 100/255,210/255,237/255,1
+                        text_size: self.size
+                        halign: "center"
+                        valign: "center"
+                        # font_name: "Comic"
 
                     AnchorLayout:
                         anchor_x:"right"
@@ -98,6 +109,92 @@
                                 text_color: 0,0,0,1
                                 size_hint: 1,0.2
                                 background_color: 0,0,0,1
+                                on_release: root.manager.current = 'help'
+
+<LearnPage>:
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+    
+        MDNavigationLayout:
+
+            ScreenManager:
+
+                Screen:
+                    name: 'learnpage'
+
+                    BoxLayout:
+                        id: "center"
+                        size_hint: 1,1  
+                        orientation:'vertical' 
+                        
+                        AnchorLayout:
+                            anchor_x:'right'
+                            anchor_y:'top'
+                    
+                            MDTopAppBar:
+                                left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                                md_bg_color: '#000000'#"#64d2ed"
+                                title: "More Information"
+                                anchor_title: "center"
+                    
+                    MDLabel:
+                        text:"Signo"
+                        font_size: dp(50)
+                        theme_text_color: "Custom"
+                        text_color: 100/255,210/255,237/255,1
+                        text_size: self.size
+                        halign: "center"
+                        valign: "top"
+                        # font_name: "Comic"
+                    
+
+                    AnchorLayout:
+                        anchor_x:"right"
+                        anchor_y:"top"
+                        canvas:
+                            Color: 
+                                rgba:(100/255,210/255,237/255,1)
+                            Rectangle:                
+                                source: "icon.png"
+                                size: 50,50
+                                pos: self.width-55,self.height-55 
+                    
+            MDNavigationDrawer:
+                id: nav_drawer
+                ContentNavigationDrawer:
+                    id: content_drawer
+                
+                    BoxLayout:
+                        orientation: 'vertical' 
+                        StackLayout:
+                            Button:
+                                text: "home"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                                on_release: root.manager.current='home'
+                            Button:
+                                text: "Learn with Signo"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                                on_release: root.manager.current='learnpage'
+                            
+                            Button:
+                                text: "Create"
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                                on_release: root.manager.current = 'create'
+                        AnchorLayout:
+                            anchor_x:'center'
+                            anchor_y:'bottom'
+                            Button:
+                                text:"Help"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                                on_release: root.manager.current = 'help'
 <Create>:
     AnchorLayout:
         anchor_x: 'center'
@@ -154,7 +251,7 @@
                                 anchor_y:'center'
                                 MDTextField:
                                     size_hint: 0.4,None
-                                    id: "word"
+                                    id: word
                                     hint_text: 'Write word or phrase'
                                     multiline: False
                             AnchorLayout:
@@ -164,13 +261,14 @@
                                     size_hint: 0.4,None
                                     text: "Submit"
                                     multiline: False
-                        AnchorLayout:
-                            anchor_x:'center'
-                            anchor_y:'center'
-                            Camera:
-                                id: 'camera'
-                                resolution: (640, 480)
-                                play: True
+                                    on_release: root.get_frames(word)
+                        # AnchorLayout:
+                        #     anchor_x:'center'
+                        #     anchor_y:'center'
+                        #     Camera:
+                        #         id: 'camera'
+                        #         resolution: (640, 480)
+                        #         play: True
                 
             MDNavigationDrawer:
                 id: nav_drawer
@@ -206,6 +304,7 @@
                                 text_color: 0,0,0,1
                                 size_hint: 1,0.2
                                 background_color: 0,0,0,1
+                                on_release: root.manager.current = 'help'
 
 
 
@@ -366,4 +465,4 @@
                                 text_color: 0,0,0,1
                                 size_hint: 1,0.2
                                 background_color: 0,0,0,1
-                    
+                                on_release: root.manager.current = 'help'
