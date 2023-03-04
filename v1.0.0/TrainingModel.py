@@ -5,7 +5,7 @@ import os
 from keras.callbacks import TensorBoard
 
 DATA_PATH = os.path.join('v1.0.0/MP_DATA/')
-actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play', 'fosshack3'])
+actions = np.load('actionsArray.npy')
 no_sequences = 30
 sequence_length =30
 

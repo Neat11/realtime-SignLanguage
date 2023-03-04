@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 import mediapipe as mp
 DATA_PATH = os.path.join('MP_Data_New_Trained')
-actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play', "fosshack3"])
+actions = np.load('actionsArray.npy')
 no_sequences = 30
 sequence_length =30
 cap = cv2.VideoCapture(0)
@@ -28,7 +28,7 @@ def extract_keypoints(results):
 
 with mp_holistic.Holistic(min_detection_confidence =0.5, min_tracking_confidence =0.5) as holistic:
     for action in actions:
-            input("press any key to start")
+            input("press any key to start {}  ".format(action))
             for sequence in range(no_sequences):
                 for frame_num in range(sequence_length):
                         ret, frame =cap.read()
