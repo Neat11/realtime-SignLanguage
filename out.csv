@@ -1,0 +1,3 @@
+,org_text,clean_text,start_time,signer_id,signer,start,end,file,label,height,fps,end_time,url,text,box,width
+0,match [light-a-MATCH],match,0.0,0,0,0,83,match light-a-MATCH,830,360.0,30.0,2.767,https://www.youtube.com/watch?v=C37R_Ix8-qs,match,"[0.05754461884498596, 0.21637457609176636, 1.0, 0.7300844192504883]",640.0
+1,match [light-a-MATCH],match,0.0,0,0,0,83,match light-a-MATCH,830,360.0,30.0,2.767,https://www.youtube.com/watch?v=C37R_Ix8-qs,match,"[0.05754461884498596, 0.21637457609176636, 1.0, 0.7300844192504883]",640.0

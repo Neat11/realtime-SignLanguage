@@ -1,0 +1,47 @@
+[
+        {
+            "org_text": "match [light-a-MATCH]",
+            "clean_text": "match",
+            "start_time": 0.0,
+            "signer_id": 0,
+            "signer": 0,
+            "start": 0,
+            "end": 83,
+            "file": "match light-a-MATCH",
+            "label": 830,
+            "height": 360.0,
+            "fps": 30.0,
+            "end_time": 2.767,
+            "url": "https://www.youtube.com/watch?v=C37R_Ix8-qs",
+            "text": "match",
+            "box": [
+                0.05754461884498596,
+                0.21637457609176636,
+                1.0,
+                0.7300844192504883
+            ],
+            "width": 640.0
+        },    {
+            "org_text": "match [light-a-MATCH]",
+            "clean_text": "match",
+            "start_time": 0.0,
+            "signer_id": 0,
+            "signer": 0,
+            "start": 0,
+            "end": 83,
+            "file": "match light-a-MATCH",
+            "label": 830,
+            "height": 360.0,
+            "fps": 30.0,
+            "end_time": 2.767,
+            "url": "https://www.youtube.com/watch?v=C37R_Ix8-qs",
+            "text": "match",
+            "box": [
+                0.05754461884498596,
+                0.21637457609176636,
+                1.0,
+                0.7300844192504883
+            ],
+            "width": 640.0
+        }
+]
