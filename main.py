@@ -15,10 +15,10 @@ import os
 from kivymd.app import MDApp
 from kivy.uix.stacklayout import StackLayout
 import json
-from kivy.uix.videoplayer import VideoPlayer
-from kivy.uix.video import Video
+from kivy.uix.image import Image
 from LanguageRecognition import LanguageRecognition as lr
 import createAction
+
 class ContentNavigationDrawer(BoxLayout):
     pass
 
@@ -52,21 +52,15 @@ class LearnPage(Screen):
 
     def __init__(self, **kw):
         super().__init__(**kw)
-        b = StackLayout(orientation='lr-tb',size=(self.size),padding=(0,80))
-        # with open("MS-ASL/MSASL_test.json") as fh:
-        #     articles = json.load(fh)
-        #     article_urls = [article['url'] for article in articles]
-        #     print( article_urls) 
-        # eurls=[]
-        # for i in article_urls:
-        #     eurls.append(i.replace("watch?v=", "embed/"))
-        # print(eurls)
-        # for i in eurls:
-        #     bx=BoxLayout(orientation="vertical",size_hint=(0.2,0.2))
-        # b.add_widget(bx)
-     
-
-
+        b = StackLayout(orientation='lr-tb',size=(self.size),padding=(0,80),size_hint_y=1)
+        DATA_PATH = os.path.join("gestures")
+        list = os.listdir(DATA_PATH)
+        for i in list:
+            bx = BoxLayout(orientation="vertical",padding=(30,30),size_hint=(0.2,0.6),spacing=30)
+            bx.add_widget(Image(source=os.path.join('gestures',i),size_hint=(1,1)))
+            bx.add_widget(Label(text=i))
+            b.add_widget(bx)
+        self.add_widget(b)
     
 
 
