@@ -1,8 +1,8 @@
 import os
 import numpy as np
 import mediapipe as mp
-DATA_PATH = os.path.join('MP_DATA')
-actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
+DATA_PATH = os.path.join('MP_Data_New_Trained')
+actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play','fosshack3'])
 no_sequences = 30
 sequence_length =30
 for action in actions:

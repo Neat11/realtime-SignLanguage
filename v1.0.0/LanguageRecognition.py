@@ -5,7 +5,7 @@ import mediapipe as mp
 import tensorflow as tf
 import pyvirtualcam
 class LanguageRecognition:
-    actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
+    actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play', 'fosshack3'])
 
     model = tf.keras.Sequential()
     model.add(tf.keras.layers.LSTM(64,return_sequences=True, activation='relu', input_shape =(30,258)))
