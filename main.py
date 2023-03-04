@@ -18,12 +18,17 @@ import json
 from kivy.uix.videoplayer import VideoPlayer
 from kivy.uix.video import Video
 from LanguageRecognition import LanguageRecognition as lr
-
+import createAction
 class ContentNavigationDrawer(BoxLayout):
     pass
 
 class Create(Screen):
-    pass
+    def __init__(self, **kw):
+        super().__init__(**kw)
+
+    def get_frames(self,textfield):
+        word = textfield.text
+        createAction.createAction(word)
 
 class Launch(Screen):
     obj = lr()

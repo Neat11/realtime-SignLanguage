@@ -156,7 +156,7 @@
                                 anchor_y:'center'
                                 MDTextField:
                                     size_hint: 0.4,None
-                                    id: "word"
+                                    id: word
                                     hint_text: 'Write word or phrase'
                                     multiline: False
                             AnchorLayout:
@@ -166,13 +166,14 @@
                                     size_hint: 0.4,None
                                     text: "Submit"
                                     multiline: False
-                        AnchorLayout:
-                            anchor_x:'center'
-                            anchor_y:'center'
-                            Camera:
-                                id: 'camera'
-                                resolution: (640, 480)
-                                play: True
+                                    on_release: root.get_frames(word)
+                        # AnchorLayout:
+                        #     anchor_x:'center'
+                        #     anchor_y:'center'
+                        #     Camera:
+                        #         id: 'camera'
+                        #         resolution: (640, 480)
+                        #         play: True
                 
             MDNavigationDrawer:
                 id: nav_drawer
