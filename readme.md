@@ -8,6 +8,10 @@ Thank you for showing interest in our project, Signo. About 70 million people in
 fork the repository and clone it by typing 
 ``` git clone <the url of your cloned repo>``` in your favourite editor.
 
+## INSTALL OBS  
+This project uses the open-source drivers provided by OBS studio. Hence we request you to download OBS studio from [here](https://obsproject.com/download).
+After downloading the software, you are required to run the virtual camera once, this will make sure you have everything set to use Signo.
+
 ## install all the libraries
 run ``` pip install -r requirements.txt ``` to get all the important dependencies.
 
