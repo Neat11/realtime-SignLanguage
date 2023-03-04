@@ -28,6 +28,7 @@ def extract_keypoints(results):
 
 with mp_holistic.Holistic(min_detection_confidence =0.5, min_tracking_confidence =0.5) as holistic:
     for action in actions:
+            input("press any key to start")
             for sequence in range(no_sequences):
                 for frame_num in range(sequence_length):
                         ret, frame =cap.read()
