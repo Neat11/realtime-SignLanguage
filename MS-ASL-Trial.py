@@ -44,7 +44,7 @@ def GetDataFromVideos(obj):
             cv2.namedWindow('video', cv2.WINDOW_NORMAL)
             time.sleep(1)
             startFrame = obj['start_time'] * obj['fps']
-            endFrame = startFrame+29
+            endFrame = startFrame+120
             frameNumber = startFrame
             while True:
                     if(frameNumber<= endFrame):
@@ -68,11 +68,11 @@ def GetDataFromVideos(obj):
         lmao = np.array(sequence)
         print(len(lmao))
         print(lmao.shape)
-        npyPath = os.path.join(DATA_PATH, obj['text'],"0")
-        os.makedirs(npyPath)
-        for x in range(len(lmao)):
-            np.save(os.path.join(npyPath,str(x)), x)
-        np.append(actions, obj['text'])
+        # npyPath = os.path.join(DATA_PATH, obj['text'],"0")
+        # os.makedirs(npyPath)
+        # for x in range(len(lmao)):
+        #     np.save(os.path.join(npyPath,str(x)), x)
+        # np.append(actions, obj['text'])
         cap.release()
         cv2.destroyAllWindows()
     except:
@@ -81,6 +81,4 @@ def GetDataFromVideos(obj):
 
 file = open('MS-ASL/MSASL_train.json')
 data = json.load(file)
-for x in data:
-    GetDataFromVideos(x)
-np.save("actionsArrayModified.npy", actions)
+GetDataFromVideos(data[0])
