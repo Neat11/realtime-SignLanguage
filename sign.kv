@@ -7,102 +7,351 @@
         Color:
             rgba: 27/255,26/255,26/255,1
         Rectangle:
-            size: self.size
+            size: self.size 
     Launch:
-        name: "Launch"
+        name: "home"
     Splash:
         name: "splash"
+    LearnPage:
+        name:"learnpage"
+
+<LearnPage>:
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+    
+        MDNavigationLayout:
+
+            ScreenManager:
+
+                Screen:
+                    name: 'learnpage'
+
+                    BoxLayout:
+                        id: "center"
+                        size_hint: 1,1  
+                        orientation:'vertical' 
+                        
+                        AnchorLayout:
+                            anchor_x:'right'
+                            anchor_y:'top'
+                    
+                            MDTopAppBar:
+                                left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                                md_bg_color: '#000000'#"#64d2ed"
+                                title: "More Information"
+                                anchor_title: "center"
+                    MDLabel:
+                        text:"Signo"
+                        font_size: dp(50)
+                        theme_text_color: "Custom"
+                        text_color: 100/255,210/255,237/255,1
+                        text_size: self.size
+                        halign: "center"
+                        valign: "top"
+                        font_name: "Comic"
+                    
+
+                    AnchorLayout:
+                        anchor_x:"right"
+                        anchor_y:"top"
+                        canvas:
+                            Color: 
+                                rgba:(100/255,210/255,237/255,1)
+                            Rectangle:                
+                                source: "icon.png"
+                                size: 50,50
+                                pos: self.width-55,self.height-55 
+                
+            MDNavigationDrawer:
+                id: nav_drawer
+                ContentNavigationDrawer:
+                    id: content_drawer
+                
+                    BoxLayout:
+                        orientation: 'vertical' 
+                        StackLayout:
+                            Button:
+                                text: "home"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                                on_release: root.manager.current='home'
+                            Button:
+                                text: "Learn with Signo"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                                on_release: root.manager.current='learnpage'
+                            
+                            Button:
+                                text: "Create"
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                        AnchorLayout:
+                            anchor_x:'center'
+                            anchor_y:'bottom'
+                            Button:
+                                text:"Help"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+
+
 
 <Splash>:
     BoxLayout:
         orientation:"vertical"
-        Label:
+        MDLabel:
             text: "Signo"
             size_hint: 0.4,0.4
             font_size: dp(40)
-        Button:
+        MDRectangleFlatButton:
             text:"Launch"
             on_release: root.launch()
+
           
 <Launch>:
     AnchorLayout:
         anchor_x: 'center'
         anchor_y: 'center'
-        BoxLayout:
-            id: 'container'
-            orientation: "vertical"
-            BoxLayout:
-                size_hint:1,1
-                id:'header'
-                orientation:"horizontal"
-                AnchorLayout:
-                    id:'Menu_button'
-                    anchor_x:'center'
-                    anchor_y:'center'
-                    canvas:
-                        Color:
-                            rgba: 100/255,210/255,237/255,1
-                        RoundedRectangle:
-                            size:root.height/6-root.height/24,6
-                            pos: 30,root.height-50     
-                            radius:  [(5, 5), (5, 5), (5, 5), (5, 5)]
-                        RoundedRectangle:
-                            size:root.height/6-root.height/24,6
-                            pos: 30,root.height+50-root.height/6      
-                            radius:  [(5, 5), (5, 5), (5, 5), (5, 5)]
-                BoxLayout:
-                    size_hint: 4,1
-                    Label:
+        
+        MDNavigationLayout:
+
+            ScreenManager:
+
+                Screen:
+                    name: 'home'
+                    BoxLayout:
+                        id: "center"
+                        size_hint: 1,1
+                        orientation:'horizontal' 
+
+                        AnchorLayout:
+                            anchor_x:"left"
+                            anchor_y:"center"
+                            canvas:
+                                Color: 
+                                    rgba:(1,1,1,1)
+                                Rectangle:                
+                                    source: "Group 3 (1).png"
+                                    size:  300,300
+                                    pos: self.width/2-150,self.height/2-150
+                                    #  self.width-250,self.height-250
+                                    
+                                    
+
+                                  
+                        
+                        # Image:
+                        #     source: 'Group 3 (1).png'
+                        #     size: self.width-250,self.height-250
+
+
+                        BoxLayout:
+                            size_hint:1,1
+                            orientation:'vertical'
+                            BoxLayout:
+                                orientation:'vertical'
+                                size_hint:1,1
+                                MDLabel:
+                                    padding: (30,30)
+                                    multiline:True
+                                    text: root.description
+                                    text_size:self.size
+                                    font_size: dp(self.height*.04)
+                                    theme_text_color: "Custom"
+                                    text_color: 100/255,210/255,237/255,1
+                                    halign: "center"
+                                    valign: "center"
+                                    font_name: "Comic"
+                            BoxLayout:
+                                size_hint:1,0.5
+                                orientation:'vertical'
+                                padding_y: dp(20)
+                                AnchorLayout:
+                                    anchor_x:'center'
+                                    anchor_y: 'center'
+                                    MDRectangleFlatButton:
+                                        text:'Launch'
+                                        size_hint:0.5,0
+                                        font_size: dp(30)
+                                        background_color: (20/216,120/216,119/216,255)
+                                        on_release: root.launch_button()
+                                AnchorLayout:
+                                    anchor_x:'center'
+                                    anchor_y: 'center'
+                                    MDRectangleFlatButton:
+                                        text:'Close'
+                                        on_release: app.Exit()
+                                        size_hint:0.5,0
+                                        font_size: dp(30)
+                                        background_color: (20/216,120/216,119/216,255)
+
+                    AnchorLayout:
+                        anchor_x:'right'
+                        anchor_y:'top'
+                    
+                        MDTopAppBar:
+                            left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                            md_bg_color: '#000000'#"#64d2ed"
+                            title: "More Information"
+                            anchor_title: "center"
+                        
+                    MDLabel:
                         text:"Signo"
-                        font_size: dp(70)
-                Image:
-                    source: "icon.png"
-                    size_hint:1,1
-
-            BoxLayout:
-                id: "center"
-                size_hint: 1,3
-                orientation:'horizontal' 
-                Image:
-                    keep_ratio:True
-                    source: 'vector art.png'
-                    size: 2*root.width,1.5
-                BoxLayout:
-                    size_hint:0.5,1
-                    orientation:'vertical'
+                        font_size: dp(50)
+                        theme_text_color: "Custom"
+                        text_color: 100/255,210/255,237/255,1
+                        text_size: self.size
+                        halign: "center"
+                        valign: "top"
+                        font_name: "Comic"
+                    
+                    
+                        
                     AnchorLayout:
-                        anchor_x:'center'
-                        anchor_y: 'center'
-                        Button:
-                            text:'Launch'
-                            size_hint:0.5,0.25
-                            font_size: dp(30)
-                            background_color: (20/216,120/216,119/216,255)
-                            on_release: root.launch_button()
-                    AnchorLayout:
-                        anchor_x:'center'
-                        anchor_y: 'center'
-                        Button:
-                            text:'Close'
-                            on_release: app.Exit()
-                            size_hint:0.5,0.25
-                            font_size: dp(30)
-                            background_color: (20/216,120/216,119/216,255)
-            BoxLayout:
-                orientation: "horizontal"
-                size_hint:1,1
-                id:'footer'
-                canvas:
-                    Color:
-                        rgba: 100/255,210/255,237/255,1
-                    RoundedRectangle:
-                        size: root.width,root.height/6
-                        pos:0,0
-                        radius:[(40,40),(40,40),(0,0),(0,0)]
-                Image:
-                    keep_ratio:True
-                    source: 'footer.png'
-                    size: 2*root.width,1.5
+                        anchor_x:"right"
+                        anchor_y:"top"
+                        canvas:
+                            Color: 
+                                rgba:(100/255,210/255,237/255,1)
+                            Rectangle:                
+                                source: "icon.png"
+                                size: 50,50
+                                pos: self.width-55,self.height-55 
+                                
+            MDNavigationDrawer:
+                id: nav_drawer
+                ContentNavigationDrawer:
+                    id: content_drawer
+                    
+                    BoxLayout:
+                        orientation: 'vertical' 
+                    
+                    
+                        StackLayout:
+                            Button:
+                                text: "home"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                                on_release: root.manager.current='home'
+                            Button:
+                                text: "Learn with Signo"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                                on_release: root.manager.current='learnpage'
+                            
+                            Button:
+                                text: "Create"
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                        AnchorLayout:
+                            anchor_x:'center'
+                            anchor_y:'bottom'
+                            Button:
+                                text:"Help"
+                                text_color: 0,0,0,1
+                                size_hint: 1,0.2
+                                background_color: 0,0,0,1
+                    
+                    
 
+           
+                    
+                        
+                            
+                            
+                        
+
+
+                
+                    # BoxLayout:
+            #             id: 'container'
+            #             orientation: "vertical"
+            #             BoxLayout:
+            #                 size_hint:1,1
+            #                 id:'header'
+            #                 orientation:"horizontal"
+            #                 AnchorLayout:
+            #                     id:'Menu_MDRectangleFlatButton'
+            #                     anchor_x:'center'
+            #                     anchor_y:'center'
+            #                     canvas:
+            #                         Color:
+            #                             rgba: 100/255,210/255,237/255,1
+            #                         RoundedRectangle:
+            #                             size:self.width*0.6,.2
+            #                             pos: (40,50)  
+            #                             radius:  [(5, 5), (5, 5), (5, 5), (5, 5)]
+            #                         RoundedRectangle:
+            #                             size: self.width*0.6,.2
+            #                             pos: self.pos    
+            #                             radius:  [(5, 5), (5, 5), (5, 5), (5, 5)]
+
+
+            #     BoxLayout:
+            #         size_hint: 4,1
+            #         MDLabel:
+            #             text:"Signo"
+            #             font_size: dp(70)
+            #             halign: "center"
+            #             theme_text_color: "Custom"
+            #             text_color: 100/255,210/255,237/255,1
+            #     # Image:
+            #     #     source: "icon.png"
+            #     #     size_hint:1,1
+
+            # BoxLayout:
+            #     id: "center"
+            #     size_hint: 1,3
+            #     orientation:'horizontal' 
+            #     Image:
+            #         keep_ratio:True
+            #         source: 'vector art.png'
+            #         size: 2*root.width,1.5
+            #     BoxLayout:
+            #         size_hint:0.5,1
+            #         orientation:'vertical'
+            #         AnchorLayout:
+            #             anchor_x:'center'
+            #             anchor_y: 'center'
+            #             MDRectangleFlatButton:
+            #                 text:'Launch'
+            #                 size_hint:0.5,0.25
+            #                 font_size: dp(30)
+            #                 background_color: (20/216,120/216,119/216,255)
+            #                 on_release: root.launch_button()
+            #         AnchorLayout:
+            #             anchor_x:'center'
+            #             anchor_y: 'center'
+            #             MDRectangleFlatButton:
+            #                 text:'Close'
+            #                 on_release: app.Exit()
+            #                 size_hint:0.5,0.25
+            #                 font_size: dp(30)
+            #                 background_color: (20/216,120/216,119/216,255)
+        #     BoxLayout:
+        #         orientation: "horizontal"
+        #         size_hint:1,1
+        #         id:'footer'
+        #         canvas:
+        #             Color:
+        #                 rgba: 100/255,210/255,237/255,1
+        #             RoundedRectangle:
+        #                 size: root.width,root.height/6
+        #                 pos:0,0
+        #                 radius:[(40,40),(40,40),(0,0),(0,0)]
+        #         Image:
+        #             keep_ratio:True
+        #             source: 'footer.png'
+        #             size: 2*root.width,1.5
+        # BoxLayout:
+        #     orientation:"horizontal"
+        #     size:self.size
+        #     BoxLayout:
+        #         orientation:
 
     
