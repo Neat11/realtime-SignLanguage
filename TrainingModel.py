@@ -4,7 +4,7 @@ import tensorflow as tf
 import os
 from keras.callbacks import TensorBoard
 
-DATA_PATH = os.path.join('MP_DATA')
+DATA_PATH = os.path.join('MP_DATA2')
 actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
 no_sequences = 30
 sequence_length =30

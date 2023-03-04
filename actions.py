@@ -2,7 +2,7 @@ import os
 import numpy as np
 import cv2
 import mediapipe as mp
-DATA_PATH = os.path.join('MP_DATA')
+DATA_PATH = os.path.join('MP_DATA2')
 actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
 no_sequences = 30
 sequence_length =30
@@ -25,10 +25,10 @@ def draw_landmarks(image, results):
                                 mp_drawing.DrawingSpec(color=(80,22,10), thickness=2, circle_radius=4), 
                                 mp_drawing.DrawingSpec(color=(80,44,121), thickness=2, circle_radius=2)
                                 )
-        mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACEMESH_TESSELATION, 
-                                 mp_drawing.DrawingSpec(color=(80,110,10), thickness=1, circle_radius=1), 
-                                 mp_drawing.DrawingSpec(color=(80,256,121), thickness=1, circle_radius=1)
-                                 ) 
+        # mp_drawing.draw_landmarks(image, results.face_landmarks, mp_holistic.FACEMESH_TESSELATION, 
+        #                          mp_drawing.DrawingSpec(color=(80,110,10), thickness=1, circle_radius=1), 
+        #                          mp_drawing.DrawingSpec(color=(80,256,121), thickness=1, circle_radius=1)
+        #                          ) 
 def extract_keypoints(results):
         lh = np.array([[res.x, res.y, res.z] for res in results.left_hand_landmarks.landmark]).flatten() if results.left_hand_landmarks else np.zeros(21*3)
         rh = np.array([[res.x, res.y, res.z] for res in results.right_hand_landmarks.landmark]).flatten() if results.right_hand_landmarks else np.zeros(21*3)

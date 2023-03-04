@@ -6,7 +6,6 @@ import tensorflow as tf
 import pyvirtualcam
 class LanguageRecognition:
     actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
-
     model = tf.keras.Sequential()
     model.add(tf.keras.layers.LSTM(64,return_sequences=True, activation='relu', input_shape =(30,258)))
     model.add(tf.keras.layers.LSTM(128,return_sequences=True, activation='relu'))
@@ -15,7 +14,7 @@ class LanguageRecognition:
     model.add(tf.keras.layers.Dense(32,activation='relu'))
     model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-    model.load_weights('action2.h5')
+    model.load_weights('action.h5')
 
     DATA_PATH = os.path.join('MP_DATA')
     actions = np.array(['hello',"iLoveYou",'okay', 'help', 'please', 'thankyou','play'])
@@ -82,8 +81,8 @@ class LanguageRecognition:
         frameno = 0
         cap = cv2.VideoCapture(0)
         fmt = pyvirtualcam.PixelFormat.BGR
-        with pyvirtualcam.Camera(width=1280, height=720, fps=20, fmt=fmt, device='/dev/video10') as cam:
-         with self.mp_holistic.Holistic(min_detection_confidence =0.5, min_tracking_confidence =0.5) as holistic:        
+        with pyvirtualcam.Camera(width=1280, height=720, fps=20, fmt=fmt, device='/dev/video5') as cam:
+          with self.mp_holistic.Holistic(min_detection_confidence =0.5, min_tracking_confidence =0.5) as holistic:        
             while (cap.isOpened()):
                 string =''
                 frameno+=1
@@ -105,7 +104,7 @@ class LanguageRecognition:
                 cv2.putText(frame,string,(x,y),3,1,(255,255,255),1,cv2.LINE_8)
                 cv2.rectangle(image,(x,y+1),(x+len(string)*21,y-22),(0,0,0),-1)
                 cv2.putText(image,string,(x,y),3,1,(255,255,255),1,cv2.LINE_8)
-                image = cv2.flip(image,1)
+                frame = cv2.flip(frame,1)
                 cv2.imshow('Open CV output',image)
                 cam.send(image)
                 cam.sleep_until_next_frame()
