@@ -5,5 +5,19 @@ Thank you for showing interest in our project, Signo. About 70 million people in
 # GETTING STARTED!
 
 ## Clone the repository
-fork the repository and clone it
-``` git clone <the url of your cloned repo>
+fork the repository and clone it by typing 
+``` git clone <the url of your cloned repo>``` in your favourite editor.
+
+## install all the libraries
+run ``` pip install -r requirements.txt ``` to get all the important dependencies.
+
+## running the program
+Start the program by running ```main.py``` and wait for the program to start completely.
+
+## contribution guildlines
+* Fork the repo
+* Create a new branch named after the feature or the branch
+* Please be respectful to the people of the community
+* You can raise any queries and problems you are facing on the issues tab
+* All pull requests are welcomed. Please give as much details possible on your PR.
+
