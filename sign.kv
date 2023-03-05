@@ -28,8 +28,6 @@
             ScreenManager:
 
                 Screen:
-                    name: 'learnpage'
-
                     BoxLayout:
                         id: "center"
                         size_hint: 1,1  
@@ -205,8 +203,6 @@
             ScreenManager:
 
                 Screen:
-                    name: 'learnpage'
-
                     BoxLayout:
                         id: "center"
                         size_hint: 1,1  
@@ -252,6 +248,8 @@
                                 MDTextField:
                                     size_hint: 0.4,None
                                     id: word
+                                    theme_text_color: "Custom"
+                                    text_color: 100/255,210/255,237/255,1
                                     hint_text: 'Write word or phrase'
                                     multiline: False
                             AnchorLayout:
