@@ -4,7 +4,7 @@ import tensorflow as tf
 import os
 from keras.callbacks import TensorBoard
 
-DATA_PATH = os.path.join('MP_Data_New_Trained')
+DATA_PATH = os.path.join('MP_Data_New_2')
 actions = np.load('actionsArray.npy')
 no_sequences = 30
 sequence_length =30
@@ -52,10 +52,10 @@ model.add(tf.keras.layers.Dense(32,activation='relu'))
 model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
 
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-model.fit(x_train, y_train, epochs=300, callbacks=[tb_callback])
+model.fit(x_train, y_train, epochs=400, callbacks=[tb_callback])
 
 # model.load_weights('action2.h5')
-model.save('action300.h5')
+model.save('actionNew400.h5')
 model.summary() 
 
 
