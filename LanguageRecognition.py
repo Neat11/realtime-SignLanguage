@@ -73,7 +73,7 @@ class LanguageRecognition:
         sentence =[]
         treshold =0.4
         frameno = 0
-        cap = cv2.VideoCapture(-1)
+        cap = cv2.VideoCapture(0)
         fmt = pyvirtualcam.PixelFormat.BGR
         with pyvirtualcam.Camera(width=1280, height=720, fps=20, fmt=fmt) as cam:
             with self.mp_holistic.Holistic(min_detection_confidence =0.5, min_tracking_confidence =0.5) as holistic:        
