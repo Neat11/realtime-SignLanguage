@@ -9,7 +9,8 @@ A software that converts ASL to plain english and displays it as subtitles on yo
 
 # Timeline:
 
-The initial stage of this project might be considered as the ideation phase, as not a lot of work had been done on the project. We had a clear idea of the machine learning models and the type of data to use in order to implement it. We had a very basic RNN model trained with 5 words 30 videos each.
+The initial stage of this project might be considered as the ideation phase, as not a lot of work had been done on the project. We had a clear idea of the machine learning models and the type of data to use in order to implement it. We had a very basic RNN model trained with 5 words 30 videos each. 
+Our project uses mediapipe to map out the data points for each hand and converts those points into a numpy array which is then fed to the model to predict the hand sign
 
 Now the model is trained with 15 classes with 60 videos of each class and 30 frames per video, with 126 datapoints in every frame and 3 coordinates per data point. we created the dataset over the course of this hackathon and it's entirely trained by us. Now the model can work on any conferencing apps by creating a virtual camera using pyvirtual cam. We optimised the entire software, to use lesser data points an reduce the drop in the frame rate when used in the browser.
 
