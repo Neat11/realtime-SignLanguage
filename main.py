@@ -15,10 +15,12 @@ import os
 from kivymd.app import MDApp
 from kivy.uix.stacklayout import StackLayout
 import json
-from kivy.uix.videoplayer import VideoPlayer
-from kivy.uix.video import Video
+from kivy.uix.image import Image
 from LanguageRecognition import LanguageRecognition as lr
 import createAction
+from  kivy.uix.videoplayer import VideoPlayer
+from kivy.uix.video import Video
+os.environ["KIVY_VIDEO"] = "ffpyplayer"
 class ContentNavigationDrawer(BoxLayout):
     pass
 
@@ -52,13 +54,19 @@ class LearnPage(Screen):
 
     def __init__(self, **kw):
         super().__init__(**kw)
-        b = StackLayout(orientation='lr-tb',size=(self.size),padding=(0,80))
-        player = VideoPlayer(source='./carrots?.mp4')
-        b.add_widget(player)
-        self.add_widget(b)
-     
-
-
+        container = BoxLayout(orientation='vertical')
+        b = StackLayout(orientation='lr-tb',size_hint_x=1,padding=(0,80),size_hint_y=None,height=self.height)
+        DATA_PATH = os.path.join("gestures")
+        list = os.listdir(DATA_PATH)
+        for i in list:
+            bx = BoxLayout(orientation="vertical",padding=(30,30),size_hint=(0.2,None),height=250,spacing=30)
+            bx.add_widget(Image(source=f"./gestures/{i}",size_hint=(1,1)))
+            bx.add_widget(Label(text=i))
+            b.add_widget(bx)
+        sv = ScrollView(size=self.size)
+        sv.add_widget(b)
+        container.add_widget(sv)
+        self.add_widget(container)
     
 
 
