@@ -14,8 +14,6 @@ for action in actions:
 
             
 def createUserFile(action: str):
-        ll = np.append(actions, [action])
-        print(ll)
         DATA_PATH = os.path.join('MP_Data_New_Trained')
         no_sequences = 30
         sequence_length =30
@@ -24,4 +22,3 @@ def createUserFile(action: str):
                     os.makedirs(os.path.join(DATA_PATH,action,str(sequence)))
                 except:
                     pass
-        np.save('actionsArray.npy', ll)
