@@ -5,6 +5,7 @@ import os
 from keras.callbacks import TensorBoard
 
 DATA_PATH = os.path.join('MP_Data_New_2')
+DATA_PATH_2 = os.path.join('MP_Data_New_Trained')
 actions = np.load('actionsArray.npy')
 no_sequences = 30
 sequence_length =30
@@ -23,6 +24,12 @@ for action in actions:
             window.append(res)
         sequences.append(window)
         labels.append(label_map[action])
+        window =[]
+        for frame_num in range(sequence_length ):
+            res = np.load(os.path.join(DATA_PATH_2,action,str(sequence),"{}.npy".format(frame_num)))
+            window.append(res)
+        sequences.append(window)
+        labels.append(label_map[action])
         
         
 x=np.array(sequences)
@@ -33,11 +40,11 @@ print("//////////////////////////////////////////////////////////////////////")
 print(y.shape)
 
 
-x_train, x_test,y_train, y_test = train_test_split(x,y, test_size=0.05)
-print(x_train.shape)
-print(y_train.shape)
-print(x_test.shape)
-print(y_test.shape)
+# x_train, x_test,y_train, y_test = train_test_split(x,y, test_size=0.05)
+# print(x_train.shape)
+# print(y_train.shape)
+# print(x_test.shape)
+# print(y_test.shape)
 
 log_dir = os.path.join("Logs")
 tb_callback = TensorBoard(log_dir=log_dir)
@@ -52,17 +59,17 @@ model.add(tf.keras.layers.Dense(32,activation='relu'))
 model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
 
 model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-model.fit(x_train, y_train, epochs=400, callbacks=[tb_callback])
+model.fit(x, y, epochs=400, callbacks=[tb_callback])
 
 # model.load_weights('action2.h5')
-model.save('actionNew400.h5')
+model.save('actionLarge400.h5')
 model.summary() 
 
 
-res = model.predict(x_test)
-print(res)
-print(actions[np.argmax(res[4])])
-print(actions[np.argmax(res[0])])
-print(actions[np.argmax(res[2])])
-print(actions[np.argmax(res[1])])
-print(actions[np.argmax(res[3])])
+# res = model.predict(x_test)
+# print(res)
+# print(actions[np.argmax(res[4])])
+# print(actions[np.argmax(res[0])])
+# print(actions[np.argmax(res[2])])
+# print(actions[np.argmax(res[1])])
+# print(actions[np.argmax(res[3])])
