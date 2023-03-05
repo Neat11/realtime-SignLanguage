@@ -15,7 +15,7 @@ class LanguageRecognition:
     model.add(tf.keras.layers.Dense(32,activation='relu'))
     model.add(tf.keras.layers.Dense(actions.shape[0], activation='softmax'))
     model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
-    model.load_weights('action500.h5')
+    model.load_weights('actionLarge400.h5')
 
     DATA_PATH = os.path.join('MP_DATA')
     actions = np.load('actionsArray.npy')
@@ -73,7 +73,7 @@ class LanguageRecognition:
         sentence =[]
         treshold =0.4
         frameno = 0
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(-1)
         fmt = pyvirtualcam.PixelFormat.BGR
         with pyvirtualcam.Camera(width=1280, height=720, fps=20, fmt=fmt) as cam:
             with self.mp_holistic.Holistic(min_detection_confidence =0.5, min_tracking_confidence =0.5) as holistic:        
