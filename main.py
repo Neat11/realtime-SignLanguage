@@ -60,7 +60,7 @@ class LearnPage(Screen):
         list = os.listdir(DATA_PATH)
         for i in list:
             bx = BoxLayout(orientation="vertical",padding=(30,30),size_hint=(0.2,None),height=250,spacing=30)
-            bx.add_widget(VideoPlayer(source=f"./gestures/{i}",size_hint=(1,1)))
+            bx.add_widget(Image(source=f"./gestures/{i}",size_hint=(1,1)))
             bx.add_widget(Label(text=i))
             b.add_widget(bx)
         sv = ScrollView(size=self.size)
