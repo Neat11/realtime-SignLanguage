@@ -5,4 +5,7 @@ import numpy as np
 
 
 actions = np.load('actionsArray.npy')
+# actions = np.delete(actions, 13)
 print(actions)
+# np.save('actionsArray.npy',actions)
+

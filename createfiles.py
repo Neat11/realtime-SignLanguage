@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import mediapipe as mp
-DATA_PATH = os.path.join('MP_DATA')
+DATA_PATH = os.path.join('MP_Data_New_2')
 actions = np.load('actionsArray.npy')
 no_sequences = 30
 sequence_length =30
